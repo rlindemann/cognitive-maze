@@ -1,0 +1,101 @@
+
+
+html,body {
+    margin: 0;
+    padding: 0;
+    background: rgb(112, 114, 122);
+    /* background: linear-gradient(to left, transparent, #cecece, #cecece, transparent ); */
+    /* background: #2B434F; */
+}
+main {
+    text-align: center;
+    width: 100%;
+}
+canvas {
+  display: block;
+}
+main {
+  align-items: center;
+  display: flex;
+  height: 100svh;
+  height: calc(var(--svh, 1svh) * 100);
+  justify-content: center;
+}
+main canvas { 
+  height: auto !important;
+  width: auto !important;
+  max-width: 99%;
+  max-height: 99%;
+  display: inline-block; 
+  margin: 100 auto;
+  vertical-align: middle;
+  touch-action: auto;
+
+}
+
+#loadingSpinner {
+    /* Define the outer ring */
+    border-top: 14 double transparent;
+    border-bottom: 14px double #353536;
+    border-left: 14px double #353536;
+    border-right: 14px double #353536;
+    width: 40px; /* Twice the size */
+    height: 40px; /* Twice the size */
+    border-radius: 50%;
+    margin: 0 auto;
+    -webkit-animation: spin 2s linear infinite; /* Adjusted animation duration */
+    animation: spin 2s linear infinite; /* Adjusted animation duration */
+    position: relative;
+    z-index: 1;
+}
+
+/* Define the inner rings */
+#loadingSpinner::before,
+#loadingSpinner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+#loadingSpinner::before {
+    border-top: 5px double transparent;
+    border-bottom: 5px double #353536;
+    border-left: 5px double #353536;
+    border-right: 5px double #353536;
+    animation: spin 2s linear infinite reverse; /* Reverse animation direction */
+}
+
+#loadingSpinner::after {
+    border-top: 5px double transparent;
+    border-bottom: 5px double #353536;
+    border-left: 5px double #353536;
+    border-right: 5px double #353536;
+    animation: spin 2s linear infinite; /* Normal animation direction */
+}
+/* Define the spin animation */
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes spin {
+	0% { -webkit-transform: rotate(0deg); }
+	100% { -webkit-transform: rotate(360deg); }
+}
+
+#loadingOverlay {
+    /* Center everything both horizontally and vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed; /* Fixed position to prevent displacement */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999; /* Ensure it's on top of other elements */
+}
